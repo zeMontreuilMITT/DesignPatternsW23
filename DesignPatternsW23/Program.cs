@@ -1,4 +1,25 @@
-﻿// ABSTRACT COMPONENT
+﻿// initialize a coffee and add two espresso
+Beverage coffee = new Coffee();
+// coffee variable refers to any concrete implementation of the Beverage abstract class
+
+// get base values
+Console.WriteLine(coffee.Description());
+Console.WriteLine(coffee.Cost());
+
+// then add decorators
+// re-define the instance we want decorate as a decorator with a reference to what it is decorating
+// coffee variable now refers to the new EspressoShot decorator
+// the decorator gets a reference to the previous object (e.g. before it was redefined)
+coffee = new EspressoShot(coffee);
+coffee = new EspressoShot(coffee);
+
+Console.WriteLine("AFTER DECORATOR");
+Console.WriteLine(coffee.Description());
+Console.WriteLine(coffee.Cost());
+
+
+
+// ABSTRACT COMPONENT
 public abstract class Beverage
 {
     // use decorator pattern to gradually and repeatedly modify the virtual methods on the abstract component
